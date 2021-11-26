@@ -16,8 +16,8 @@ var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'ugmarket.ugent.be',
   port     : 13306,
-  user     : 'wwelvaer',
-  password : '0000',
+  user     : 'yourUsername',
+  password : 'yourPassword',
   database : 'exClassTest',
   timezone : 'CET'
 });
