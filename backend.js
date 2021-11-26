@@ -18,7 +18,7 @@ var connection = mysql.createConnection({
   port     : 13306,
   user     : 'yourUsername',
   password : 'yourPassword',
-  database : 'exClassTest',
+  database : 'databaseName',
   timezone : 'CET'
 });
 connection.connect();
