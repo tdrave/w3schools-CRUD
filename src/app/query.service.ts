@@ -27,7 +27,7 @@ export class QueryService {
    *    @param InputField.Reference: Requires a query with 2 columns: the primary key and a string value that will be displayed in the dropdown field
    */
   datasets = {
-    Customers: {
+        Customers: {
       PK: "CustomerID",
       tableName: "Customers",
       query: "SELECT * FROM Customers",
@@ -40,18 +40,18 @@ export class QueryService {
         Country: InputField.Text,
       }
     },
+    // Orders_basic: {
+    //   PK: "OrderID",
+    //   tableName: "Orders",
+    //   query: "SELECT * FROM Orders",
+    //   form: {
+    //     CustomerID: InputField.Reference("SELECT CustomerID, CustomerName FROM Customers"),
+    //     EmployeeID: InputField.Reference("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) as name FROM Employees"),
+    //     OrderDate: InputField.Date,
+    //     ShipperID: InputField.Reference("SELECT ShipperID, ShipperName FROM Shippers"),
+    //   }
+    // },
     Orders: {
-      PK: "OrderID",
-      tableName: "Orders",
-      query: "SELECT * FROM Orders",
-      form: {
-        CustomerID: InputField.Reference("SELECT CustomerID, CustomerName FROM Customers"),
-        EmployeeID: InputField.Reference("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) as name FROM Employees"),
-        OrderDate: InputField.Date,
-        ShipperID: InputField.Reference("SELECT ShipperID, ShipperName FROM Shippers"),
-      }
-    },
-    Orders_WithNames: {
       PK: "OrderID",
       tableName: "Orders",
       query: "SELECT OrderID, CustomerName, CONCAT(FirstName, ' ', LastName) as EmployeeName, OrderDate, ShipperName FROM Orders JOIN Shippers USING (ShipperID) JOIN Customers USING (CustomerID) JOIN Employees USING (EmployeeID)",
@@ -62,17 +62,17 @@ export class QueryService {
         ShipperID: InputField.Reference("SELECT ShipperID, ShipperName FROM Shippers"),
       }
     },
+    // Order_details_simple: {
+    //   PK: "OrderDetailID",
+    //   tableName: "Order_details",
+    //   query: "SELECT * FROM Order_details",
+    //   form: {
+    //     OrderID: InputField.Reference("SELECT OrderID, CONCAT(OrderID, ' - ' , CustomerName) as name FROM Orders JOIN Customers USING(CustomerID)"),
+    //     ProductID: InputField.Reference("SELECT ProductID, ProductName FROM Products"),
+    //     Quantity: InputField.Number
+    //   }
+    // },
     Order_details: {
-      PK: "OrderDetailID",
-      tableName: "Order_details",
-      query: "SELECT * FROM Order_details",
-      form: {
-        OrderID: InputField.Reference("SELECT OrderID, CONCAT(OrderID, ' - ' , CustomerName) as name FROM Orders JOIN Customers USING(CustomerID)"),
-        ProductID: InputField.Reference("SELECT ProductID, ProductName FROM Products"),
-        Quantity: InputField.Number
-      }
-    },
-    Order_details_WithNames: {
       PK: "OrderDetailID",
       tableName: "Order_details",
       query: "SELECT OrderDetailID, OrderID, ProductName, Quantity FROM Order_details JOIN Products USING(ProductID) ORDER BY OrderID",
@@ -87,25 +87,11 @@ export class QueryService {
       tableName: "Products",
       query: "SELECT * FROM Products"
     },
-    test: {
-      PK: "ProductID",
-      tableName: "Products",
-      query: "SELECT * FROM Products"
-    },
     Suppliers: {
       PK: "SupplierID",
       tableName: "Suppliers",
       query: "SELECT * FROM Suppliers"
     },
-    Ships: {​
-      PK:"imoID",
-      tableName:"Ships",
-      query:"select * from Ships",
-      form: {​
-      imoID:InputField.Text,
-      shipType:InputField.Text
-      }​
-    }​,
     Shippers: {​
       PK:"ShipperID",
       tableName:"Shippers",
@@ -114,16 +100,6 @@ export class QueryService {
       ShipperName:InputField.Text,
       Phone:InputField.Text
       }​
-    }​,
-    Trips: {​
-      PK:["ShipperID", "imoID"],
-      tableName:"Trips",
-      query:"select Shippers.ShipperID, Shippers.ShipperName, Ships.imoID, Ships.shipType, Trips.trip_time from Trips INNER JOIN Ships ON Ships.imoID = Trips.imoID INNER JOIN Shippers ON Shippers.ShipperID = Trips.ShipperID",
-      form: {​
-      ShipperID:InputField.Reference("select ShipperID, ShipperName from Shippers"),
-      imoID:InputField.Text,
-      trip_time:InputField.Number
-      }​,
     }​,
   }
 
