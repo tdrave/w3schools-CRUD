@@ -1,6 +1,6 @@
 # Install W3schools
 
-run 'npm install' (If you have errors: search on google!)
+run `npm install` (If you have errors: search on google!)
 
 1. ## Backend server
 
