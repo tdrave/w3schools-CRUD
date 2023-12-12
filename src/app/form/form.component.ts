@@ -69,7 +69,11 @@ export class FormComponent implements OnInit {
             });
           })
           return [k, l];
-        } else // InputField.Text, InputField.Number, InputField.Date
+        } 
+        else if (typeof v === 'function' && v.name === 'Dropdown') { // Check if it's a dropdown
+          return [k, v()]; // Call the function to get the options
+        }
+        else // InputField.Text, InputField.Number, InputField.Date
           return [k, v];
       });
       // Initialize formGroup

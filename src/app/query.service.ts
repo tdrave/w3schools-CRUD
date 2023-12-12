@@ -25,7 +25,8 @@ export class QueryService {
    *    @param InputField.Number
    *    @param InputField.Date
    *    @param InputField.Reference: Requires a query with 2 columns: the primary key and a string value that will be displayed in the dropdown field
-   */
+   *    @param InputField.Dropdown
+   */   
   datasets = {
         Customers: {
       PK: "CustomerID",
@@ -37,7 +38,7 @@ export class QueryService {
         Address: InputField.Text,
         City: InputField.Text,
         PostalCode: InputField.Text,
-        Country: InputField.Text,
+        Country: InputField.Dropdown(["Belgium", "Germany"]),
       }
     },
     // Orders_basic: {
